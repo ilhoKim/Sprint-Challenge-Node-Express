@@ -11,14 +11,24 @@ const projectModel = require('../data/helpers/actionModel');
 
 // CRUD required
 
-router.get()
+router.get('/', (req, res)=> {
+    
+})
 
-router.get()
+router.get('/:id', (req, res) => {
+    
+} )
 
-router.post()
+router.post('/', (req, res) => {
 
-router.delete()
+})
 
-router.put()
+router.delete('/:id', (req, res) => {
+    
+})
+
+router.put('/:id', (req, res) => {
+    
+})
 
 module.exports = router;

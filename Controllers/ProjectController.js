@@ -9,11 +9,25 @@ const projectModel = require('../data/helpers/projectModel');
 //   completed: boolean to indicate if the project has been completed, not required
 
 // CRUD required
+router.get('/', (req, res)=> {
+    projects.get().then(projects => res.json(projects));
+})
 
-router.get()
-router.get()
-router.post()
-router.delete()
-router.put()
+router.get('/:id', (req, res) => {
+    
+} )
+
+router.post('/', (req, res) => {
+
+})
+
+router.delete('/:id', (req, res) => {
+    
+})
+
+router.put('/:id', (req, res) => {
+    
+})
+
 
 module.exports = router;
