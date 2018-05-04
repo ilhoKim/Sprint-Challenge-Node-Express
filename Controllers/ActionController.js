@@ -1,5 +1,5 @@
 const express = require('express');
-const ActionRouter = express.Router();
+const router = express.Router();
 const projectModel = require('../data/helpers/actionModel');
 
 // DB SCHEME
@@ -12,9 +12,13 @@ const projectModel = require('../data/helpers/actionModel');
 // CRUD required
 
 router.get()
+
 router.get()
+
 router.post()
+
 router.delete()
+
 router.put()
 
-module.exports = ActionRouter;
+module.exports = router;

@@ -1,5 +1,5 @@
 const express = require('express');
-const ProjectsRouter = express.Router();
+const router = express.Router();
 const projectModel = require('../data/helpers/projectModel');
 
 // DB SCHEME:
@@ -16,4 +16,4 @@ router.post()
 router.delete()
 router.put()
 
-module.exports = ProjectsRouter;
+module.exports = router;
