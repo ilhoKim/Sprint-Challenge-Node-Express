@@ -15,12 +15,31 @@ router.get('/', (req, res) => {
         res.json(response)
     })
     .catch(error => {
-        sendUserError(500, 'Data cannot be retrieve', res)
+        sendUserError(500, 'Data cannot be retrieved', res)
         return;
     })
 })
 
+router.get('/:id', (req, res) => {
+    db.get(req.params.id)
+    .then(response => {
+        if (response.length === 0) {
+            sendUserError(404, "ID not found", res);
+            return;
+        } else {
+            res.status(200).json(response);
+        }
+    })
+    .catch(error => {
+        sendUserError(500, 'Data cannot be retrieved', res)
+        return;
+    })
+})
+
+
 // INSERT
+
+
 // UPDATE
 // REMOVE
 
