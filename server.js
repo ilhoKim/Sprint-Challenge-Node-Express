@@ -1,21 +1,20 @@
 const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
 
-const ProjectsController = require('./Controllers/ProjectController');
-const ActionsController = require('./Controllers/ActionController');
+// const ProjectsRoute = require('./Routes/ProjectRoute');
+// const ActionsRoute = require('./Routes/ActionRoute');
 
 const server = express();
 
-server.use(helmet());
-server.use(cors());
+const port = 5555;
+
+
 server.use(express.json());
 
-server.use('/Controllers', ProjectController);
-server.use('/Controllers', ActionController);
+// server.use('api/projects', ProjectRoute);
+// server.use('api/actions', ActionRoute);
 
 server.get('/', (req, res) => {
-    res.send('Api running');
+    res.send('Welcom to Express');
   });
     
-server.listen(5000, () => console.log('\n== API Running on port 5000 ==\n'));
+server.listen(port, () => console.log(`\n== Express server online at port: ${port} ==\n`));

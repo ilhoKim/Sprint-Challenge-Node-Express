@@ -1,26 +1,19 @@
 {
-  "name": "sprint-challenge-node-express",
+  "name": "Sprint-Challenge-Node-Express",
   "version": "1.0.0",
-  "description": "## Assignments",
   "main": "server.js",
+  "repository": "https://github.com/ilhoKim/Sprint-Challenge-Node-Express.git",
+  "author": "Il Ho Kim",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon"
+  },
   "dependencies": {
-    "cors": "^2.8.4",
     "express": "^4.16.3",
-    "helmet": "^3.12.0",
-    "knex": "^0.14.6",
-    "sqlite3": "^4.0.0"
+    "knex": "^0.15.2",
+    "sqlite3": "^4.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.17.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ilhoKim/Sprint-Challenge-Node-Express.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ilhoKim/Sprint-Challenge-Node-Express/issues"
-  },
-  "homepage": "https://github.com/ilhoKim/Sprint-Challenge-Node-Express#readme"
+    "nodemon": "^1.18.4"
+  }
 }
