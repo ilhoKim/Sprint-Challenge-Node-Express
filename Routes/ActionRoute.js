@@ -41,70 +41,47 @@ router.post("/", (req, res) => {
     sendUserError(400, "Please provide description AND notes", res);
     return;
   }
-  db.insert({  project_id, description, notes, completed })
-  .then(response => {
-      res.status(201).json({id: response.id, description, notes});
-  })
-  .catch(error => {
+  db.insert({ project_id, description, notes, completed })
+    .then(response => {
+      res.status(201).json({ id: response.id, description, notes });
+    })
+    .catch(error => {
       console.log(error);
       sendUserError(400, "Field not found", res);
       return;
-  })
+    });
 });
 
 // UPDATE
 router.put("/:id", (req, res) => {
-    const { id } = req.params;
-    const { project_id, description, notes, completed } = req.body;
-  
-    // if ( !description || !notes) {
-    //   sendUserError(400, "Must provide description AND notes", res);
-    //   return;
-    // }
-  
-    db
-      .update(id, { project_id, description, notes, completed })
-      .then(response => {
-        // if (response == 0) {
-        //   sendUserError(404, "Data with the specified ID does not exist.", res);
-        //   return;
-        // } 
-        // db.get(id)
-        // .then(response => {
-        //   if (response.length === 0) {
-        //     sendUserError(404, "ID not found", res);
-        //     return;
-        //   } else {
-            res.status(200).json(response);
-        //   }
-        // })
-        // .catch(error => {
-        //   sendUserError(500, "Data cannot be retrieved", res);
-        //   return;
-        // });
-      })        
-      .catch(error => {
-        sendUserError(500, "Something bad happened in the DB", res)
-        return;
-      });
-    })
+  const { id } = req.params;
+  const { project_id, description, notes, completed } = req.body;
 
+  db.update(id, { project_id, description, notes, completed })
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(error => {
+      sendUserError(500, "Something bad happened in the DB", res);
+      return;
+    });
+});
 
 // REMOVE
 router.delete("/:id", (req, res) => {
-    const { id } = req.params;
-    db
-      .remove(id)
-      .then(response => {
-        if (response === 0) {
-          sendUserError(404, "The user with that ID does not exist.", res);
-          return;
-        }
-        res.json({ success: `User with id: ${id} removed from the system` });
-      })
-      .catch(error => {
-        sendUserError(500, "The user could not be removed", res);
+  const { id } = req.params;
+  db.remove(id)
+    .then(response => {
+      if (response === 0) {
+        sendUserError(404, "The user with that ID does not exist.", res);
         return;
-      });})
+      }
+      res.json({ success: `User with id: ${id} removed from the system` });
+    })
+    .catch(error => {
+      sendUserError(500, "The user could not be removed", res);
+      return;
+    });
+});
 
 module.exports = router;
