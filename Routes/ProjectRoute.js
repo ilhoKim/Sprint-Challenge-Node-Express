@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../data/helpers/actionModel.js");
+const db = require("../data/helpers/projectModel.js");
 
 const sendUserError = (status, message, res) => {
   res.status(status).json({ errorMessage: message });
@@ -36,14 +36,14 @@ router.get("/:id", (req, res) => {
 
 // INSERT
 router.post("/", (req, res) => {
-  const { project_id, description, notes, completed } = req.body;
-  if (!description || !notes) {
-    sendUserError(400, "Please provide description AND notes", res);
+  const { name, description, completed } = req.body;
+  if (!name || !description) {
+    sendUserError(400, "Please provide name AND description", res);
     return;
   }
-  db.insert({ project_id, description, notes, completed })
+  db.insert({ name, description, completed })
     .then(response => {
-      res.status(201).json({ id: response.id, description, notes });
+      res.status(201).json({ id: response.id, name, description, completed });
     })
     .catch(error => {
       console.log(error);
@@ -55,9 +55,9 @@ router.post("/", (req, res) => {
 // UPDATE
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  const { project_id, description, notes, completed } = req.body;
+  const { name, description, completed } = req.body;
 
-  db.update(id, { project_id, description, notes, completed })
+  db.update(id, { name, description, completed })
     .then(response => {
       res.status(200).json(response);
     })
